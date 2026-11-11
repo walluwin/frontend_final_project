@@ -5,8 +5,8 @@ Final project for the Frontend course.
 
 **Team:** Dinmukhammed · Yerketay · Aldiyar
 
-- **Live site:** https://YOUR-USERNAME.github.io/digital-art-store/  ← replace after deploying
-- **Repository:** https://github.com/YOUR-USERNAME/digital-art-store
+- **Live site:** https://walluwin.github.io/frontend_final_project/
+- **Repository:** https://github.com/walluwin/frontend_final_project/
 
 ## Purpose and audience
 
