@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart — ArtNova</title>
+  <meta name="description" content="Your ArtNova shopping cart and checkout.">
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Apply the saved theme before the page paints, so there is no light/dark flash -->
+  <script>
+    try {
+      var savedTheme = JSON.parse(localStorage.getItem("artnova-theme"));
+      if (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches) savedTheme = "dark";
+      document.documentElement.setAttribute("data-theme", savedTheme || "light");
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="ArtNova home">
+        <img src="images/logo.jpg" alt="" width="36" height="36">
+        <span>ArtNova</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="inspiration.html">Inspiration</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn theme-toggle" type="button" aria-label="Switch to dark mode">
+          <i class="bi bi-moon-stars"></i>
+        </button>
+        <a href="cart.html" class="icon-btn" aria-label="Shopping cart">
+          <i class="bi bi-bag"></i>
+          <span class="cart-count" data-count="0"></span>
+        </a>
+        <a href="login.html" class="btn btn-ghost btn-sm login-link">
+          <i class="bi bi-person"></i><span>Log in</span>
+        </a>
+        <button class="icon-btn menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow"><i class="bi bi-bag"></i> Cart</span>
+        <h1>Your cart</h1>
+        <p>Choose a license for each artwork and get your files instantly after checkout.</p>
+      </div>
+    </section>
+
+    <section class="container cart-layout">
+      <div class="card" id="cartList"></div>
+
+      <aside class="grid" style="gap:20px">
+        <div class="card card-pad">
+          <h3>Order summary</h3>
+          <div class="summary-row"><span>Items</span><span id="sumItems">0</span></div>
+          <div class="summary-row"><span>Subtotal</span><span id="sumSubtotal">$0.00</span></div>
+          <div class="summary-row"><span>Discount</span><span id="sumDiscount">−$0.00</span></div>
+          <div class="summary-row total"><span>Total</span><span id="sumTotal">$0.00</span></div>
+          <div class="form-group" style="margin-top:16px">
+            <label for="promoInput">Promo code</label>
+            <div style="display:flex;gap:8px">
+              <input class="input" type="text" id="promoInput" placeholder="ART10" aria-describedby="promoInput-error">
+              <button class="btn btn-ghost" id="promoButton" type="button">Apply</button>
+            </div>
+            <small class="error-msg" id="promoInput-error" aria-live="polite"></small>
+          </div>
+        </div>
+
+        <div class="card card-pad">
+          <h3>Checkout</h3>
+          <p class="muted" style="font-size:.9rem"><a href="login.html">Log in</a> to save orders in your profile.</p>
+          <form id="checkoutForm" class="form" novalidate>
+            <div class="form-alert" role="status"></div>
+            <div class="form-group">
+              <label for="checkoutName">Full name</label>
+              <input class="input" type="text" id="checkoutName" name="fullName" placeholder="Aruzhan Bekova" autocomplete="name"
+                data-validate="required name" data-label="name" aria-describedby="checkoutName-error">
+              <small class="error-msg" id="checkoutName-error" aria-live="polite"></small>
+            </div>
+            <div class="form-group">
+              <label for="checkoutEmail">Email for download links</label>
+              <input class="input" type="text" id="checkoutEmail" name="email" placeholder="name@mail.com" autocomplete="email"
+                data-validate="required email" data-label="email" aria-describedby="checkoutEmail-error">
+              <small class="error-msg" id="checkoutEmail-error" aria-live="polite"></small>
+            </div>
+            <div class="form-group">
+              <label for="checkoutPhone">Phone number</label>
+              <input class="input" type="tel" id="checkoutPhone" name="phone" placeholder="+7 777 123 45 67" autocomplete="tel"
+                data-validate="required phone" data-label="phone number" aria-describedby="checkoutPhone-error">
+              <small class="error-msg" id="checkoutPhone-error" aria-live="polite"></small>
+            </div>
+            <div class="form-group">
+              <label class="checkbox">
+                <input type="checkbox" id="checkoutTerms" name="terms" data-validate="checkbox" data-label="terms" aria-describedby="checkoutTerms-error">
+                <span>I agree to the license terms</span>
+              </label>
+              <small class="error-msg" id="checkoutTerms-error" aria-live="polite"></small>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block"><i class="bi bi-lock"></i> Place order</button>
+          </form>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year">2026</span> ArtNova · Made by Dinmukhammed, Yerketay and Aldiyar</p>
+      <ul class="footer-links">
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop — ArtNova</title>
+  <meta name="description" content="Browse, search and filter original digital artworks at ArtNova.">
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Apply the saved theme before the page paints, so there is no light/dark flash -->
+  <script>
+    try {
+      var savedTheme = JSON.parse(localStorage.getItem("artnova-theme"));
+      if (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches) savedTheme = "dark";
+      document.documentElement.setAttribute("data-theme", savedTheme || "light");
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="ArtNova home">
+        <img src="images/logo.jpg" alt="" width="36" height="36">
+        <span>ArtNova</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="inspiration.html">Inspiration</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn theme-toggle" type="button" aria-label="Switch to dark mode">
+          <i class="bi bi-moon-stars"></i>
+        </button>
+        <a href="cart.html" class="icon-btn" aria-label="Shopping cart">
+          <i class="bi bi-bag"></i>
+          <span class="cart-count" data-count="0"></span>
+        </a>
+        <a href="login.html" class="btn btn-ghost btn-sm login-link">
+          <i class="bi bi-person"></i><span>Log in</span>
+        </a>
+        <button class="icon-btn menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow"><i class="bi bi-palette"></i> Shop</span>
+        <h1>All artworks</h1>
+        <p>Search by title, artist or mood. Your filters are saved, so the shop looks the same when you come back.</p>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="card toolbar">
+        <div class="search-box">
+          <label for="searchInput" class="visually-hidden">Search artworks</label>
+          <i class="bi bi-search"></i>
+          <input class="input" type="search" id="searchInput" placeholder="Search: neon, planet, Lena Voss…" autocomplete="off">
+        </div>
+        <div>
+          <label for="priceFilter" class="visually-hidden">Price</label>
+          <select class="select" id="priceFilter">
+            <option value="any">Any price</option>
+            <option value="under20">Under $20</option>
+            <option value="20to40">$20 – $40</option>
+            <option value="over40">Over $40</option>
+          </select>
+        </div>
+        <div>
+          <label for="sortSelect" class="visually-hidden">Sort by</label>
+          <select class="select" id="sortSelect">
+            <option value="popular">Most popular</option>
+            <option value="newest">Newest</option>
+            <option value="rating">Best rated</option>
+            <option value="priceAsc">Price: low to high</option>
+            <option value="priceDesc">Price: high to low</option>
+          </select>
+        </div>
+        <button class="chip" id="favOnly" type="button" aria-pressed="false"><i class="bi bi-heart"></i> Favorites only</button>
+      </div>
+
+      <div class="chips" id="categoryChips" aria-label="Filter by category"></div>
+
+      <div class="results-bar">
+        <span id="resultCount" aria-live="polite"></span>
+        <button class="btn btn-ghost btn-sm" id="resetFilters" type="button"><i class="bi bi-arrow-counterclockwise"></i> Reset filters</button>
+      </div>
+
+      <div class="grid grid-4 shop-grid" id="shopGrid"></div>
+    </section>
+
+    <!-- Quick view modal (filled by js/shop.js) -->
+    <div class="modal" id="quickView" role="dialog" aria-modal="true" aria-labelledby="qvTitle">
+      <div class="modal-box">
+        <button class="icon-btn modal-close" type="button" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+        <img src="images/neon-dreams.jpg" alt="">
+        <div class="modal-content">
+          <span class="eyebrow" id="qvCategory"></span>
+          <h2 id="qvTitle"></h2>
+          <p class="muted" id="qvArtist" style="margin:0"></p>
+          <p class="rating" id="qvRating"></p>
+          <p id="qvDesc"></p>
+          <div class="tags" id="qvTags"></div>
+          <ul class="check-list">
+            <li><i class="bi bi-check-circle-fill"></i> Vector SVG + PNG up to 8K</li>
+            <li><i class="bi bi-check-circle-fill"></i> Instant download after purchase</li>
+          </ul>
+          <div class="art-foot">
+            <span class="price" id="qvPrice"></span>
+            <button class="btn btn-primary" id="qvAdd" type="button"><i class="bi bi-bag-plus"></i> Add to cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year">2026</span> ArtNova · Made by Dinmukhammed, Yerketay and Aldiyar</p>
+      <ul class="footer-links">
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/shop.js"></script>
+</body>
+</html>

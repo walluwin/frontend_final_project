@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Original Digital Art Store — ArtNova</title>
+  <meta name="description" content="ArtNova is an online store of original digital art: wallpapers, prints and pixel art from independent artists.">
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Apply the saved theme before the page paints, so there is no light/dark flash -->
+  <script>
+    try {
+      var savedTheme = JSON.parse(localStorage.getItem("artnova-theme"));
+      if (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches) savedTheme = "dark";
+      document.documentElement.setAttribute("data-theme", savedTheme || "light");
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="ArtNova home">
+        <img src="images/logo.jpg" alt="" width="36" height="36">
+        <span>ArtNova</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="inspiration.html">Inspiration</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn theme-toggle" type="button" aria-label="Switch to dark mode">
+          <i class="bi bi-moon-stars"></i>
+        </button>
+        <a href="cart.html" class="icon-btn" aria-label="Shopping cart">
+          <i class="bi bi-bag"></i>
+          <span class="cart-count" data-count="0"></span>
+        </a>
+        <a href="login.html" class="btn btn-ghost btn-sm login-link">
+          <i class="bi bi-person"></i><span>Log in</span>
+        </a>
+        <button class="icon-btn menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">New drop every Friday</span>
+          <h1>Original digital art for your screens &amp; walls</h1>
+          <p class="lead">Buy high-resolution artworks from independent artists. Use them as wallpapers, print them as posters or license them for your brand.</p>
+          <div class="hero-actions">
+            <a href="shop.html" class="btn btn-primary">Explore the shop <i class="bi bi-arrow-right"></i></a>
+            <a href="signup.html" class="btn btn-outline"><i class="bi bi-person-plus"></i> Create account</a>
+          </div>
+          <div class="stats">
+            <div><strong>12+</strong><span>original artworks</span></div>
+            <div><strong>6</strong><span>independent artists</span></div>
+            <div><strong>8K</strong><span>max resolution</span></div>
+          </div>
+        </div>
+        <div class="hero-art">
+          <img src="images/retro-sunset.jpg" alt="Retro Sunset — one of our best-selling artworks">
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Browse by style</span>
+            <h2>Find your aesthetic</h2>
+          </div>
+          <p>Six collections, from calm abstract gradients to 8-bit pixel creatures.</p>
+        </div>
+        <div class="grid grid-3" id="categoryGrid"></div>
+      </div>
+    </section>
+
+    <!-- Featured artworks -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Top rated</span>
+            <h2>Customer favorites</h2>
+          </div>
+          <a href="shop.html" class="btn btn-outline">See all artworks <i class="bi bi-arrow-right"></i></a>
+        </div>
+        <div class="grid grid-4 shop-grid" id="featuredGrid"></div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">How it works</span>
+            <h2>From click to wall in minutes</h2>
+          </div>
+        </div>
+        <div class="grid grid-3">
+          <div class="feature reveal">
+            <div class="feature-icon"><i class="bi bi-search-heart"></i></div>
+            <h3>1. Pick an artwork</h3>
+            <p>Search and filter by style, price or mood. Save favorites to compare later.</p>
+          </div>
+          <div class="feature reveal">
+            <div class="feature-icon"><i class="bi bi-patch-check"></i></div>
+            <h3>2. Choose a license</h3>
+            <p>Personal use for your home and devices, or a commercial license for your business.</p>
+          </div>
+          <div class="feature reveal">
+            <div class="feature-icon"><i class="bi bi-cloud-arrow-down"></i></div>
+            <h3>3. Download instantly</h3>
+            <p>Get vector SVG and PNG up to 8K. Print at any size without losing quality.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="container reveal">
+      <div class="cta">
+        <div>
+          <h2>Get new drops first</h2>
+          <p>One email every Friday with new artworks and a 10% promo code. No spam.</p>
+        </div>
+        <form id="newsletterForm" class="form" novalidate>
+          <div class="form-alert" role="status"></div>
+          <div class="newsletter">
+            <div class="form-group">
+            <label for="newsEmail"><span class="visually-hidden">Email address</span></label>
+            <input class="input" type="text" id="newsEmail" name="email" placeholder="your@email.com" autocomplete="email"
+              data-validate="required email" data-label="email" aria-describedby="newsEmail-error">
+            <small class="error-msg" id="newsEmail-error" aria-live="polite"></small>
+          </div>
+            <button type="submit" class="btn btn-light">Subscribe <i class="bi bi-send"></i></button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year">2026</span> ArtNova · Made by Dinmukhammed, Yerketay and Aldiyar</p>
+      <ul class="footer-links">
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inspiration — ArtNova</title>
+  <meta name="description" content="Search thousands of public-domain masterpieces from the Cleveland Museum of Art for inspiration.">
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Apply the saved theme before the page paints, so there is no light/dark flash -->
+  <script>
+    try {
+      var savedTheme = JSON.parse(localStorage.getItem("artnova-theme"));
+      if (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches) savedTheme = "dark";
+      document.documentElement.setAttribute("data-theme", savedTheme || "light");
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="ArtNova home">
+        <img src="images/logo.jpg" alt="" width="36" height="36">
+        <span>ArtNova</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="inspiration.html">Inspiration</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn theme-toggle" type="button" aria-label="Switch to dark mode">
+          <i class="bi bi-moon-stars"></i>
+        </button>
+        <a href="cart.html" class="icon-btn" aria-label="Shopping cart">
+          <i class="bi bi-bag"></i>
+          <span class="cart-count" data-count="0"></span>
+        </a>
+        <a href="login.html" class="btn btn-ghost btn-sm login-link">
+          <i class="bi bi-person"></i><span>Log in</span>
+        </a>
+        <button class="icon-btn menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow"><i class="bi bi-bank"></i> Live museum data</span>
+        <h1>Inspiration from the <span class="text-gradient">great masters</span></h1>
+        <p>Every digital artist learns from classic art. Search tens of thousands of public-domain works from the Cleveland Museum of Art, loaded live from their open API.</p>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="card card-pad">
+        <form id="apiSearchForm" class="form" novalidate role="search">
+          <div class="form-row" style="grid-template-columns:1fr auto;align-items:start">
+            <div class="form-group">
+            <label for="apiQuery"><span class="visually-hidden">Search museum artworks</span></label>
+            <input class="input" type="text" id="apiQuery" name="query" placeholder="Try: cat, sunset, Japan, Monet…" autocomplete="off"
+              data-validate="required" data-label="search word" aria-describedby="apiQuery-error">
+            <small class="error-msg" id="apiQuery-error" aria-live="polite"></small>
+          </div>
+            <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i> Search</button>
+          </div>
+        </form>
+        <div class="chips" id="quickTopics" style="margin-top:14px" aria-label="Popular topics">
+          <button class="chip" data-query="impressionism">Impressionism</button>
+          <button class="chip" data-query="japan">Japanese prints</button>
+          <button class="chip" data-query="ocean">Ocean</button>
+          <button class="chip" data-query="night">Night</button>
+          <button class="chip" data-query="geometric">Geometric</button>
+          <button class="chip" data-query="cat">Cats</button>
+        </div>
+        <div class="recent" id="recentSearches"></div>
+      </div>
+
+      <p class="results-bar" id="apiStatus" aria-live="polite"></p>
+
+      <div class="grid grid-4 api-grid" id="apiGrid"></div>
+
+      <div style="text-align:center;margin-top:32px">
+        <button class="btn btn-outline" id="loadMore" type="button" hidden><i class="bi bi-plus-lg"></i> Load more</button>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid grid-3">
+        <div class="feature reveal">
+          <div class="feature-icon"><i class="bi bi-eye"></i></div>
+          <h3>Study composition</h3>
+          <p>Notice how old masters balance light and dark — the same rules work in digital art.</p>
+        </div>
+        <div class="feature reveal">
+          <div class="feature-icon"><i class="bi bi-palette2"></i></div>
+          <h3>Borrow palettes</h3>
+          <p>Many of our artists build their color palettes from classic paintings.</p>
+        </div>
+        <div class="feature reveal">
+          <div class="feature-icon"><i class="bi bi-unlock"></i></div>
+          <h3>Public domain</h3>
+          <p>We only show works that are free to view and share, with a link to the museum page.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year">2026</span> ArtNova · Made by Dinmukhammed, Yerketay and Aldiyar</p>
+      <ul class="footer-links">
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/inspiration.js"></script>
+</body>
+</html>

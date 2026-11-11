@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — ArtNova</title>
+  <meta name="description" content="Who we are, who ArtNova is for and the team behind the project.">
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Apply the saved theme before the page paints, so there is no light/dark flash -->
+  <script>
+    try {
+      var savedTheme = JSON.parse(localStorage.getItem("artnova-theme"));
+      if (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches) savedTheme = "dark";
+      document.documentElement.setAttribute("data-theme", savedTheme || "light");
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="ArtNova home">
+        <img src="images/logo.jpg" alt="" width="36" height="36">
+        <span>ArtNova</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="inspiration.html">Inspiration</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn theme-toggle" type="button" aria-label="Switch to dark mode">
+          <i class="bi bi-moon-stars"></i>
+        </button>
+        <a href="cart.html" class="icon-btn" aria-label="Shopping cart">
+          <i class="bi bi-bag"></i>
+          <span class="cart-count" data-count="0"></span>
+        </a>
+        <a href="login.html" class="btn btn-ghost btn-sm login-link">
+          <i class="bi bi-person"></i><span>Log in</span>
+        </a>
+        <button class="icon-btn menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow"><i class="bi bi-info-circle"></i> About ArtNova</span>
+        <h1>Art that lives on your screen</h1>
+        <p>We connect independent digital artists with people who want something more personal than a stock wallpaper.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:20px">
+      <div class="container split">
+        <img class="reveal" src="images/ocean-layers.jpg" alt="Ocean Layers — layered blue waves artwork">
+        <div class="reveal">
+          <span class="eyebrow">Our story</span>
+          <h2>Started by three students who love design</h2>
+          <p class="muted">ArtNova began as a university project: we noticed that young artists in Kazakhstan had no simple place to sell digital work, and buyers had no easy way to find original art instead of copied images.</p>
+          <p class="muted">Every artwork in our store is original, generated or drawn by its author, and sold with a clear license.</p>
+          <ul class="check-list">
+            <li><i class="bi bi-check-circle-fill"></i> 100% original artworks, no stock images</li>
+            <li><i class="bi bi-check-circle-fill"></i> Artists keep 80% of every sale</li>
+            <li><i class="bi bi-check-circle-fill"></i> Clear personal and commercial licenses</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Who we are for</span>
+            <h2>Our audience</h2>
+          </div>
+          <p>ArtNova is built for people aged 16–35 who care about how their digital and physical spaces look.</p>
+        </div>
+        <div class="grid grid-3">
+          <div class="feature reveal">
+            <div class="feature-icon"><i class="bi bi-phone"></i></div>
+            <h3>Students &amp; creators</h3>
+            <p>Unique wallpapers, avatars and stream overlays at student-friendly prices.</p>
+          </div>
+          <div class="feature reveal">
+            <div class="feature-icon"><i class="bi bi-house-heart"></i></div>
+            <h3>Home decorators</h3>
+            <p>Vector files that print sharp at any size, from A5 cards to large posters.</p>
+          </div>
+          <div class="feature reveal">
+            <div class="feature-icon"><i class="bi bi-shop"></i></div>
+            <h3>Small businesses</h3>
+            <p>Commercial licenses for cafes, menus, social media and packaging.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">The team</span>
+            <h2>Meet the people behind ArtNova</h2>
+          </div>
+        </div>
+        <div class="grid grid-3">
+          <div class="card team-card reveal">
+            <img class="avatar" src="images/team-dinmukhammed.jpg" alt="Dinmukhammed" width="96" height="96">
+            <h3>Dinmukhammed</h3>
+            <div class="role">Team lead · JavaScript</div>
+            <p>Built the authentication, cart and shop filtering logic.</p>
+          </div>
+          <div class="card team-card reveal">
+            <img class="avatar" src="images/team-yerketay.jpg" alt="Yerketay" width="96" height="96">
+            <h3>Yerketay</h3>
+            <div class="role">UI/UX design · CSS</div>
+            <p>Designed the visual style, responsive layout and light/dark themes.</p>
+          </div>
+          <div class="card team-card reveal">
+            <img class="avatar" src="images/team-aldiyar.jpg" alt="Aldiyar" width="96" height="96">
+            <h3>Aldiyar</h3>
+            <div class="role">API integration · Testing</div>
+            <p>Connected the museum API, wrote form validation and tested every page.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-head reveal" style="justify-content:center;text-align:center">
+          <div>
+            <span class="eyebrow">FAQ</span>
+            <h2>Frequently asked questions</h2>
+          </div>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>What file formats do I get? <i class="bi bi-plus-lg"></i></summary>
+            <p>Every purchase includes a vector SVG file and PNG exports in 4K and 8K resolution.</p>
+          </details>
+          <details>
+            <summary>What is the difference between licenses? <i class="bi bi-plus-lg"></i></summary>
+            <p>Personal use covers your devices and prints for your home. Commercial use lets you use the artwork in a business, for example on a menu, website or product.</p>
+          </details>
+          <details>
+            <summary>Can I sell my own art on ArtNova? <i class="bi bi-plus-lg"></i></summary>
+            <p>Yes! Write to us through the contact page and choose "I am an artist" as the topic.</p>
+          </details>
+          <details>
+            <summary>Do you have discounts? <i class="bi bi-plus-lg"></i></summary>
+            <p>Subscribe to our newsletter on the home page to get a 10% promo code (hint: try ART10 in the cart).</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year">2026</span> ArtNova · Made by Dinmukhammed, Yerketay and Aldiyar</p>
+      <ul class="footer-links">
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
